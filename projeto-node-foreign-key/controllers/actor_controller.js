@@ -10,7 +10,7 @@ async function createActor(req, res) {
 }
 
 async function listActors(req, res) {
-    const list = await Actor.findAll();
+    const list = await Actor.findAll({include: Film});
     res.json(list);
 }
 

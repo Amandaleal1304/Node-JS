@@ -3,7 +3,11 @@ import express from 'express';
 import film_router from './routers/film_router.js';
 import actor_router from './routers/actor_router.js';
 import director_router from './routers/director_router.js';
+import syncer from './database/syncer.js';
 
+if(!await syncer()){
+    process.exit();//se nao conseguir sincronizar, sai
+}
 const app = express();
 
 app.use(express.json());

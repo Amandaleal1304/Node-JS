@@ -1,16 +1,26 @@
+import Director from "../models/director.js";
 import Film from "../models/film.js";
+import Actor from "../models/actor.js";
 
 async function createFilm(req, res) {
+    const actors = [];//vetor de id de atores
+    for(let i = 0; i < req.body.actors.length; i++){
+       const actor = await Actor.findByPk( req.body.actors[i]);//busca pelo id
+       actors.push(actor);//adiciona ao vetor
+        
+    }
     const film = await Film.create({
         title: req.body.title,
         description: req.body.description,
-        year: req.body.year
+        year: req.body.year,
+        DirectorId: req.body.DirectorId
     });
+    await film.addActors(actors);//adiciona os atores
     res.json(film);
 }
 
 async function listFilms(req, res) {
-    const list = await Film.findAll();
+    const list = await Film.findAll({include:[Actor, Director]});
     res.json(list);
 }
 

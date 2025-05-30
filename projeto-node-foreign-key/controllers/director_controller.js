@@ -1,4 +1,5 @@
 import Director from "../models/director.js";
+import Film from "../models/film.js";
 
 async function createDirector(req, res) {
     const director = await Director.create({
@@ -9,7 +10,7 @@ async function createDirector(req, res) {
 }
 
 async function listDirectors(req, res) {
-    const list = await Director.findAll();
+    const list = await Director.findAll({include: Film});
     res.json(list);
 }
 

@@ -9,7 +9,5 @@ const sequelize = new Sequelize({
     database: 'pratica_node'
 });
 
-// Make sync middlware 
-sequelize.sync();
 
 export default sequelize;
