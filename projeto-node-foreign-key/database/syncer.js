@@ -2,6 +2,7 @@ import sequelize from "./mysql.js";
 import Film from "../models/film.js";
 import Director from "../models/director.js";
 import Actor from "../models/actor.js";
+//teste git
 async function syncer(){
     try{
     await sequelize.authenticate();
