@@ -1,17 +1,18 @@
 import Director from "../models/director.js";
+import Film from "../models/film.js";
 
 async function createDirector(req,  res){ //req é a requisicao que chega 
+
     const director = await Director.create({
         name: req.body.name,
          age: req.body.age,
          telephone: req.body.telephone,
     });
-
     res.json(director);
 }
 
 async function listDirectors(req, res){
-    const list = await Director.findAll();//lista completa
+    const list = await Director.findAll({include:[Film]});//lista completa
     res.json(list);
 }
 

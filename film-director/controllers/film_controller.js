@@ -1,17 +1,29 @@
 import Film from "../models/film.js";
+import Gender from "../models/gender.js";
+import Director from "../models/director.js";
 
 async function createFilm(req,  res){ //req é a requisicao que chega 
+
+    const genders = [];//vetor de id de genders
+    for(let i = 0; i < req.body.genders.length; i++){
+       const gender = await Gender.findByPk( req.body.genders[i]);//busca pelo id
+       genders.push(gender);//adiciona ao vetor
+        
+    }
+
     const film = await Film.create({
         title: req.body.title,
          description: req.body.description,
          year: req.body.year,
+         DirectorId: req.body.DirectorId               
     });
 
+    await film.addGenders(genders);//adiciona os genders
     res.json(film);
 }
 
 async function listFilms(req, res){
-    const list = await Film.findAll();//lista completa
+    const list = await Film.findAll({include:[Gender, Director]});//lista completa
     res.json(list);
 }
 

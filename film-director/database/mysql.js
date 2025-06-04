@@ -9,6 +9,4 @@ const sequelize = new Sequelize({
     database: 'projeto_node'
 });
 
-sequelize.sync();//cria se nao tiver criado
-
 export default sequelize;
