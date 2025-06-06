@@ -1,5 +1,5 @@
-import Director from "../models/director.js";
-import Film from "../models/film.js";
+import Director from "../../models/director.js";                        
+import Film from "../../models/film.js";
 
 async function createDirector(req,  res){ //req é a requisicao que chega 
 

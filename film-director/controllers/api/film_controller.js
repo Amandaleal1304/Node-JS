@@ -1,8 +1,9 @@
-import Film from "../models/film.js";
-import Gender from "../models/gender.js";
-import Director from "../models/director.js";
+import Film from "../../models/film.js";
+import Gender from "../../models/gender.js";
+import Director from "../../models/director.js";
 
 async function createFilm(req,  res){ //req é a requisicao que chega 
+    console.log(req.body);                                                                                      
 
     const genders = [];//vetor de id de genders
     for(let i = 0; i < req.body.genders.length; i++){
@@ -10,7 +11,6 @@ async function createFilm(req,  res){ //req é a requisicao que chega
        genders.push(gender);//adiciona ao vetor
         
     }
-
     const film = await Film.create({
         title: req.body.title,
          description: req.body.description,

@@ -1,4 +1,4 @@
-import { createDirector, listDirectors, editDirector, deleteDirector } from "../controllers/director_controller.js";
+import { createDirector, listDirectors, editDirector, deleteDirector } from "../../controllers/api/director_controller.js";
 import { Router } from "express";
 
 const director_router = Router();
