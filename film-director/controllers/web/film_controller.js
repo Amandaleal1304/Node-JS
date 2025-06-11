@@ -42,7 +42,7 @@ async function createFilm(req, res) {
 async function listFilms(req, res) {
 
     const list = await Film.findAll({ include: [Gender, Director], raw: true });
-
+    console.log(list);//ver como ta saindo a informacao de diretor e genero
 
     res.render('films/films', { films: list });
 

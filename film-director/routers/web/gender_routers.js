@@ -1,12 +1,16 @@
-import { createGender, listGenders, editGender, deleteGender } from "../../controllers/web/gender_controller.js";
+import { createGender, listGenders, editGender, deleteGender, saveGender } from "../../controllers/web/gender_controller.js";
 import { Router } from "express";
 
-const gender_router = Router();
+const gender_web_router = Router();
 
+gender_web_router.get('/', listGenders);
 
-gender_router.get("/", listGenders);
-gender_router.post("/", createGender);
-gender_router.put("/", editGender);
-gender_router.delete("/", deleteGender);
+gender_web_router.post('/create', createGender);
 
-export default gender_router;
+gender_web_router.post('/edit', editGender);
+
+gender_web_router.post('/save', saveGender);
+
+gender_web_router.post('/delete', deleteGender);
+
+export default gender_web_router;
