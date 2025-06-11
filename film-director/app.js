@@ -46,6 +46,8 @@ app.use('/directors', director_web_router);//tudo vai ser subrota de /directors
 
 app.use('/genders', gender_web_router);//tudo vai ser subrota de /genders
 
+app.use(express.static('public'));//arquivos estaticos para usar o css tem que liberar a pasta 
+
 app.listen(80, ()=>{
     console.log('Escutando...');
 });
