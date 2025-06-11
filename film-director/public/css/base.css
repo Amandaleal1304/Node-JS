@@ -91,7 +91,7 @@ header nav a:hover {
 /* Estilo para formulários */
 form {
     background-color: var(--white-bg);
-    padding: 25px 30px;
+    padding: 20px 30px;
     border-radius: 12px;
     box-shadow: var(--shadow-medium);
     margin-bottom: 40px;
@@ -102,7 +102,7 @@ form {
 
 form label {
     display: block;
-    margin-bottom: 2px; /* Diminuído para reduzir ainda mais o espaço */
+    margin-bottom: 1px; /* Espaço pequeno entre label e campo */
     font-weight: 600;
     color: #555;
 }
@@ -111,7 +111,7 @@ form input[type="text"],
 form input[type="number"] { /* Adicionado input[type="number"] aqui */
     width: calc(100% - 20px);
     padding: 10px;
-    margin-bottom: 8px; /* Diminuído para reduzir ainda mais o espaço */
+    margin-bottom: 15px; /* Diminuído para reduzir o espaço entre os campos */
     border: 1px solid var(--light-border);
     border-radius: 8px;
     font-size: 1rem;
@@ -203,7 +203,7 @@ td[style*="display: flex; justify-content: space-evenly;"] {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    gap: 10px;
+    gap: px;
     padding: 8px 20px;
 }
 
