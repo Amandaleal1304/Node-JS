@@ -20,7 +20,7 @@ async function createDirector(req, res) {
 async function listDirectors(req, res) {
 
     const list = await Director.findAll({ include: [Film], raw: true });
-    res.render('director/director', { directors: list });
+    res.render('director/director', { directors: list });///director e o nome da minha pasta na view e o proximo o nome da view
 
 }
 

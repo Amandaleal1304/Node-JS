@@ -21,11 +21,25 @@
 
     <label for="DirectorId">Director</label>
 
-    <input type="text" id="DirectorId" name="DirectorId" value="{{film_editing.DirectorId}}" required>
+    <select name="DirectorId" id="DirectorId">
+        {{#each directors}}
+                        <option value="{{this.id}}"
+                        {{#if (eq this.id ../film_editing.DirectorId)}} selected {{/if}}{{!--pega a variavel criada a cima e passa para a eq criada no app.js--}}
+                        >{{this.name}}</option> {{!-- aqui pega o id e mostra o nome --}}
+        {{/each}}
+    </select>
 
-    <label for="genders">Genders</label>
+    {{!-- <input type="text" id="DirectorId" name="DirectorId" value="{{film_editing.DirectorId}}" required> --}}
 
-    <input type="text" id="genders" name="genders" value="{{film_editing.genders}}">
+    <label>Genders</label>
+
+    {{!-- <input type="text" id="genders" name="genders" value="{{film_editing.genders}}"> --}}
+    <div class="gender-options">
+    {{#each genders}}
+    <input type="checkbox" id = "gender{{this.id}}" name="genders" value="{{this.id}} ">
+    <label for="gender{{this.id}}">{{this.name}}</label>
+    {{/each}}
+    </div>
 
     <button>{{#if action }}Editar{{else}}Criar{{/if}}</button>
 
@@ -48,6 +62,8 @@
 
             <th>Director</th>
 
+            <th>Genders</th>
+
             <th>Ações</th>
 
         </tr>
@@ -66,7 +82,13 @@
 
             <td>{{this.year}}</td>
 
-            <td>{{this.DirectorId}}</td>
+            <td>{{this.Director.name}}</td>
+
+            <td> {{#each this.Genders}}
+                 {{this.name}}
+                 {{#unless @last}} - {{/unless}}
+                 {{/each}}
+            </td>
 
             <td style="display: flex; justify-content: space-evenly;">
 

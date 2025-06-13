@@ -41,10 +41,15 @@ async function createFilm(req, res) {
 
 async function listFilms(req, res) {
 
-    const list = await Film.findAll({ include: [Gender, Director], raw: true });
-    console.log(list);//ver como ta saindo a informacao de diretor e genero
+    const list = await Film.findAll({ include: [Gender, Director]});
+    //o raw true e pra filtrar o data values
+    //nest so muda a estrutura ou seja cria o objeto diretor
+    const list_processed = list.map((film =>{return film.toJSON();}) );
+    console.log(list_processed);//teste de o que ta sendo passado
+    const directors = await Director.findAll({raw: true});//pega a lista de directors e passa para a interface
+    const genders = await Gender.findAll({raw: true});//pega a lista de genders e passa para a interface
 
-    res.render('films/films', { films: list });
+    res.render('films/films', { films: list_processed, directors: directors, genders: genders });//app.js a router e /nome do arquivo handlebars
 
 }
 
@@ -53,8 +58,20 @@ async function listFilms(req, res) {
 async function editFilm(req, res) { 
 
     const film = await Film.findOne({ where: { id: req.body.id } });
-
-    res.render('films/films', { action: 'edit', film_editing: film.dataValues });
+    const film_editing = film.toJSON();
+    console.log(film_editing);
+    const directors = await Director.findAll({raw: true});//pega a lista de directors e passa para a interface
+    const genders = await Gender.findAll({raw: true});//pega a lista de genders e passa para a interface
+    film.genders = film.Genders.map((ac) => {
+        return ac.id;
+    });//vai percorrer o vetor e pegar os generos marcados por comparação
+    console.log(film);
+    res.render('films/films', {
+         action: 'edit',
+          film_editing: film.dataValues,
+          directors: directors,
+          genders: genders
+        });///films é o nome da minha pasta na view
 
 }
 

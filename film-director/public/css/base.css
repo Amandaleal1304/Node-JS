@@ -89,12 +89,13 @@ header nav a:hover {
 }
 
 /* Estilo para formulários */
+/* Estilo para formulários */
 form {
     background-color: var(--white-bg);
     padding: 20px 30px;
     border-radius: 12px;
     box-shadow: var(--shadow-medium);
-    margin-bottom: 40px;
+    margin: 0 auto 40px auto; /* Adicione '0 auto' aqui para centralizar horizontalmente */
     max-width: 600px; /* Aumentado para deixar a caixa mais larga */
     width: 100%;
     box-sizing: border-box;
@@ -108,7 +109,8 @@ form label {
 }
 
 form input[type="text"],
-form input[type="number"] { /* Adicionado input[type="number"] aqui */
+form input[type="number"],
+form select { 
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 15px; /* Diminuído para reduzir o espaço entre os campos */
@@ -119,8 +121,31 @@ form input[type="number"] { /* Adicionado input[type="number"] aqui */
     transition: border-color 0.3s ease;
 }
 
+/* Para colocar todos os itens de gênero em linha */
+.gender-options {
+    display: flex; /* Usa Flexbox para organizar os itens em linha */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha se não houver espaço suficiente */
+    gap: 15px; /* Adiciona um espaçamento entre os itens (opcional) */
+    align-items: center; /* Alinha os itens verticalmente no centro (opcional) */
+    margin-bottom: 15px;
+}
+
+/* Se você quiser controlar o espaçamento e alinhamento de cada item individualmente */
+.gender-item {
+    display: flex; /* Faz com que o checkbox e o label dentro de cada item fiquem em linha */
+    align-items: center; /* Alinha o checkbox e o label verticalmente */
+    margin-right: 15px; /* Espaçamento entre cada grupo de checkbox/label */
+    margin-bottom: 5px; /* Pequeno espaçamento inferior se eles quebrarem a linha */
+}
+
+/* Opcional: Para ajustar o espaçamento entre o checkbox e o label dentro de cada item */
+.gender-item input[type="checkbox"] {
+    margin-right: 5px;
+}
+
 form input[type="text"]:focus,
-form input[type="number"]:focus { /* Adicionado input[type="number"] aqui */
+form input[type="number"]:focus,
+form select:focus { 
     border-color: var(--primary-blue);
     outline: none;
     box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);

@@ -22,6 +22,10 @@ const hbs = create({
     partialsDir: 'views/partials/'//pasta dos parciais
 });
 
+hbs.handlebars.registerHelper('eq', (a, b) => {
+    return a == b;
+});//criar um helper que recebe dois valores e compara se sao iguais usa na view 
+
 app.use(express.json());
 app.use(express.urlencoded());//interpreta os dados do formulario padrao de navegador
 app.engine('handlebars', hbs.engine);//usar o handlebars
