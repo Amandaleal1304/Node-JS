@@ -80,13 +80,16 @@ async function editFilm(req, res) {
 async function saveFilm(req, res) { 
     const genders = [];
 
-    for (let i = 0; i < req.body.genders.length; i++) {
+    if(req.body.genders){
+        for (let i = 0; i < req.body.genders.length; i++) {
 
-        const gender= await Gender.findByPk(req.body.genders[i]);
-
-        genders.push(gender);
-
+            const gender= await Gender.findByPk(req.body.genders[i]);
+    
+            genders.push(gender);
+    
+        }
     }
+    
 
     const film = await Film.findOne({ where: { id: req.body.id } });
 
