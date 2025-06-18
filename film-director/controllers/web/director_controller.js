@@ -55,25 +55,14 @@ async function saveDirector(req, res) {
 
 async function deleteDirector(req, res) {
 
-/*************  ✨ Windsurf Command 🌟  *************/
-    // Finds a director by id and destroy it
     const director = await Director.findOne({ where: { id: req.body.id } });
 
-    // Destroy the director
     await director.destroy();
 
-    // Render a message to the user
     res.render('alerts', { title: 'Directors', body: 'Director deleted.' });
 
 }
 
-/**
- * Deletes a director
- * @param {Request} req - the request object
- * @param {Response} res - the response object
- */
-
-/*******  673c4db4-bcea-4f5e-a6d0-7976a536062e  *******/
 
 export { createDirector, listDirectors, editDirector, saveDirector, deleteDirector };
 
