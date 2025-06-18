@@ -36,7 +36,9 @@
     {{!-- <input type="text" id="genders" name="genders" value="{{film_editing.genders}}"> --}}
     <div class="gender-options">
     {{#each genders}}
-    <input type="checkbox" id = "gender{{this.id}}" name="genders" value="{{this.id}} ">
+    <input type="checkbox" id = "gender{{this.id}}" name="genders" value="{{this.id}}" 
+    {{#if (contains ../film_editing.genders this.id)}} checked {{/if}}
+    >
     <label for="gender{{this.id}}">{{this.name}}</label>
     {{/each}}
     </div>

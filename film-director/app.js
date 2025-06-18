@@ -24,7 +24,11 @@ const hbs = create({
 
 hbs.handlebars.registerHelper('eq', (a, b) => {
     return a == b;
-});//criar um helper que recebe dois valores e compara se sao iguais usa na view 
+});//criar um helper que recebe dois valores e compara se sao iguais usa na view na parte de diretor
+
+hbs.handlebars.registerHelper('contains', (a, b) => {
+    return typeof a != 'undefined' && a.indexOf(b) != -1;//procura no vetor o valor e retorna o indice se nao encontrar retorna -1
+});//se for diferente de -1 é porque existe ou seja marca o genero como pertence ao filme
 
 app.use(express.json());
 app.use(express.urlencoded());//interpreta os dados do formulario padrao de navegador
