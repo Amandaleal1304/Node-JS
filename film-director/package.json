@@ -12,6 +12,7 @@
   "author": "Amanda Leal",
   "license": "ISC",
   "dependencies": {
+    "@sequelize/postgres": "^7.0.0-alpha.46",
     "bcrypt": "^6.0.0",
     "connect-session-sequelize": "^8.0.0",
     "express": "^5.1.0",
